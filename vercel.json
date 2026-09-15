@@ -1,15 +1,8 @@
 {
-  "$schema": "https://openapi.vercel.sh/vercel.json",
-  "experimentalServices": {
-    "frontend": {
-      "entrypoint": "frontend",
-      "framework": "vite",
-      "routePrefix": "/"
-    },
-    "admin": {
-      "entrypoint": "admin-panel",
-      "framework": "vite",
-      "routePrefix": "/admin"
-    }
-  }
+  "buildCommand": "npm install --prefix frontend && npm install --prefix admin-panel && npm run build --prefix frontend && npm run build --prefix admin-panel && cp -r admin-panel/dist frontend/dist/admin",
+  "outputDirectory": "frontend/dist",
+  "rewrites": [
+    { "source": "/admin/(.*)", "destination": "/admin/index.html" },
+    { "source": "/(.*)",       "destination": "/index.html" }
+  ]
 }
