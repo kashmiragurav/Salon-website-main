@@ -1,35 +1,15 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "services": {
+  "experimentalServices": {
     "frontend": {
-      "root": "frontend/",
-      "framework": "vite"
+      "entrypoint": "frontend",
+      "framework": "vite",
+      "routePrefix": "/"
     },
     "admin": {
-      "root": "admin-panel/",
-      "framework": "vite"
+      "entrypoint": "admin-panel",
+      "framework": "vite",
+      "routePrefix": "/admin"
     }
-  },
-  "rewrites": [
-    {
-      "source": "/admin",
-      "destination": {
-        "service": "admin",
-        "path": "/"
-      }
-    },
-    {
-      "source": "/admin/(.*)",
-      "destination": {
-        "service": "admin",
-        "path": "/:match"
-      }
-    },
-    {
-      "source": "/(.*)",
-      "destination": {
-        "service": "frontend"
-      }
-    }
-  ]
+  }
 }
